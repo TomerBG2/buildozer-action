@@ -1,17 +1,29 @@
-"""
-Simple Hello World app to test Buildozer Action.
-
-It builds Kivy app with file main.kv.
-"""
-
-from kivy.app import App
 from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout
+from kivymd.app import MDApp
 
 
-class MainApp(App):
+class SalaryCalcLayout(BoxLayout):
+    pass
+
+
+class SalaryCalc(MDApp):
+    def calculate(self, instance):
+        try:
+            tip_amount = int(self.root.ids.tip_amount.text)
+            base_salary = int(self.root.ids.base_salary.text)
+            result = (tip_amount - base_salary) * 0.3 + base_salary
+            self.root.ids.result_label.text = f"Your salary is: {result} out of {tip_amount}"
+        except ValueError:
+            self.root.ids.result_label.text = "Please enter integers"
+
     def build(self):
-        return Builder.load_file("main.kv")
+        self.theme_cls.primary_palette = "DeepPurple"
+        self.theme_cls.primary_hue = "A400"
+        Builder.load_file('my2.kv')
+        return SalaryCalcLayout()
+        
 
 
-if __name__ == "__main__":
-    MainApp().run()
+if __name__ == '__main__':
+    SalaryCalc().run()

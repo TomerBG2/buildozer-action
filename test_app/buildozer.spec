@@ -1,7 +1,7 @@
 [app]
 
-title = Test App
-package.name = testapp
+title = Dani salary calculater app
+package.name = SalaryCalc
 package.domain = org.test
 
 source.dir = .
