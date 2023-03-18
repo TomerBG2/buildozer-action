@@ -13,7 +13,7 @@ class SalaryCalc(MDApp):
             tip_amount = int(self.root.ids.tip_amount.text)
             base_salary = int(self.root.ids.base_salary.text)
             result = (tip_amount - base_salary) * 0.3 + base_salary
-            self.root.ids.result_label.text = f"Your salary is: {result} out of {tip_amount}"
+            self.root.ids.result_label.text = f"Your salary is: {result}, company get {tip_amount - result}"
         except ValueError:
             self.root.ids.result_label.text = "Please enter integers"
 
