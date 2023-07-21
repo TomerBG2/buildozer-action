@@ -1,61 +1,181 @@
-<SalaryCalcLayout>:
-    orientation: 'vertical'
-    padding: 15
-    spacing: 15
-    
-    MDLabel:
-        text: "Hey dani! Let's calculate your salary for today :)"
-        font_style: 'H6'
-        theme_text_color: 'Primary'
-        halign: 'center'
+<MenuScreen>:
+    FloatLayout:
+        MDLabel:
+            text: "Calculate"
+            theme_text_color: 'Primary'
+            halign: 'center'
+            pos_hint: {'center_x': 0.5, 'top': 0.3}
 
-    MDTextField:
-        id: tip_amount
-        hint_text: "Tip for today"
-        font_size: '24sp'
-        mode: "rectangle"
-        size_hint: (None, None)
-        width: '200dp'
-        height: '48dp'
-        multiline: False
-        input_filter: 'int'
-        helper_text: " "
-        helper_text_mode: "on_error"
-        pos_hint: {'center_x': 0.5}
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            size_hint: (None, None)
+            size: dp(200), dp(50)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+
+            MDRaisedButton:
+                text: 'Basic Bitchez'
+                font_style: 'H6'
+                on_press: root.manager.current = 'IntroTour'
+                size_hint: (1, 1)
         
-    MDLabel:
-        text: "Your base salary:"
-        font_style: 'H6'
-        theme_text_color: 'Primary'
-        halign: 'center'
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            size_hint: (None, None)
+            size: dp(200), dp(50)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDLabel:
+                text: "Hey Dani :) Let's calculate your salary for today"
+                theme_text_color: 'Primary'
+                halign: 'center'
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            size_hint: (None, None)
+            size: dp(200), dp(50)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+
+            MDRaisedButton:
+                text: 'Golden Hour'
+                font_style: 'H6'
+                on_press: root.manager.current = 'SunsetTour'
+                size_hint: (1, 1)
+
+<IntroTour>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 15
+        spacing: 15
         
-    MDTextField:
-        id: base_salary
-        hint_text: "Enter your base salary"
-        font_size: '24sp'
-        mode: "rectangle"
-        size_hint: (None, None)
-        width: '200dp'
-        height: '48dp'
-        multiline: False
-        input_filter: 'int'
-        text: "35"
-        helper_text: " "
-        helper_text_mode: "on_error"
-        pos_hint: {'center_x': 0.5}
+        MDLabel:
+            text: "Basic Bitchez"
+            font_style: 'H6'
+            theme_text_color: 'Primary'
+            halign: 'center'
+
+        MDTextField:
+            id: tip_amount
+            hint_text: "Tip for today"
+            font_size: '24sp'
+            mode: "rectangle"
+            size_hint: (None, None)
+            width: '200dp'
+            height: '48dp'
+            multiline: False
+            input_filter: 'int'
+            helper_text: " "
+            helper_text_mode: "on_error"
+            pos_hint: {'center_x': 0.5}
+            
+        MDLabel:
+            text: "Your base salary:"
+            font_style: 'H6'
+            theme_text_color: 'Primary'
+            halign: 'center'
+            
+        MDTextField:
+            id: base_salary
+            hint_text: "Enter your base salary"
+            font_size: '24sp'
+            mode: "rectangle"
+            size_hint: (None, None)
+            width: '200dp'
+            height: '48dp'
+            multiline: False
+            input_filter: 'int'
+            text: "35"
+            helper_text: " "
+            helper_text_mode: "on_error"
+            pos_hint: {'center_x': 0.5}
+            
+        MDRaisedButton:
+            text: "Calculate"
+            font_size: '20sp'
+            size_hint: (None, None)
+            width: '200dp'
+            height: '48dp'
+            pos_hint: {'center_x': 0.5}
+            on_release: root.calculate(self)
+            
+        MDLabel:
+            id: result_label
+            font_style: 'H6'
+            theme_text_color: 'Primary'
+            halign: 'center'
+            color: 0, 0.7, 1, 1
+        MDRaisedButton:
+            text: 'Back to menu'
+            font_style: 'H6'
+            on_press: root.manager.current = 'menu'
+
+
+<SunsetTour>:
+    BoxLayout:
+
+        orientation: 'vertical'
+        padding: 15
+        spacing: 15
         
-    MDRaisedButton:
-        text: "Calculate"
-        font_size: '20sp'
-        size_hint: (None, None)
-        width: '200dp'
-        height: '48dp'
-        pos_hint: {'center_x': 0.5}
-        on_release: app.calculate(self)
-        
-    MDLabel:
-        id: result_label
-        font_style: 'H6'
-        theme_text_color: 'Primary'
-        halign: 'center'
-        color: 0, 0.7, 1, 1
+        MDLabel:
+            text: "Golden Hour"
+            font_style: 'H6'
+            theme_text_color: 'Primary'
+            halign: 'center'
+
+        MDTextField:
+            id: tip_amount
+            hint_text: "Tip for today"
+            font_size: '24sp'
+            mode: "rectangle"
+            size_hint: (None, None)
+            width: '200dp'
+            height: '48dp'
+            multiline: False
+            input_filter: 'int'
+            helper_text: " "
+            helper_text_mode: "on_error"
+            pos_hint: {'center_x': 0.5}
+            
+        MDLabel:
+            text: "Your base salary:"
+            font_style: 'H6'
+            theme_text_color: 'Primary'
+            halign: 'center'
+            
+        MDTextField:
+            id: base_salary
+            hint_text: "Enter your base salary"
+            font_size: '24sp'
+            mode: "rectangle"
+            size_hint: (None, None)
+            width: '200dp'
+            height: '48dp'
+            multiline: False
+            input_filter: 'int'
+            text: "35"
+            helper_text: " "
+            helper_text_mode: "on_error"
+            pos_hint: {'center_x': 0.5}
+            
+        MDRaisedButton:
+            text: "Calculate"
+            font_size: '20sp'
+            size_hint: (None, None)
+            width: '200dp'
+            height: '48dp'
+            pos_hint: {'center_x': 0.5}
+            on_release: root.calculate(self)
+            
+        MDLabel:
+            id: result_label
+            font_style: 'H6'
+            theme_text_color: 'Primary'
+            halign: 'center'
+            color: 0, 0.7, 1, 1
+        MDRaisedButton:
+            text: 'Back to menu'
+            font_style: 'H6'
+            on_press: root.manager.current = 'menu'
